@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PlayerConceptDesign.Model.ColorsTheme">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <AssociationLine Name="ColorEnlargeGradient2_" Type="System.Windows.Media.Color" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.25" Y="8.146" />
+        <Point X="8.25" Y="8.438" />
+        <Point X="9.165" Y="8.438" />
+        <Point X="9.165" Y="9.875" />
+        <Point X="9" Y="9.875" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.482" Y="0.174" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ColorMainGradient1_" Type="System.Windows.Media.Color" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9" Y="5.326" />
+        <Point X="9.267" Y="5.326" />
+        <Point X="9.267" Y="9.688" />
+        <Point X="9.248" Y="9.688" Type="JumpStart" />
+        <Point X="9.082" Y="9.688" Type="JumpEnd" />
+        <Point X="9" Y="9.688" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.492" Y="0.257" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ColorPlayerSlider_" Type="System.Windows.Media.SolidColorBrush" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9" Y="6.735" />
+        <Point X="9.267" Y="6.735" />
+        <Point X="9.267" Y="9" />
+        <Point X="9.248" Y="9" Type="JumpStart" />
+        <Point X="9.082" Y="9" Type="JumpEnd" />
+        <Point X="9" Y="9" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.501" Y="-0.064" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ColorPlayerPanelBorderBrush_" Type="System.Windows.Media.SolidColorBrush" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9" Y="4.023" />
+        <Point X="9.272" Y="4.023" />
+        <Point X="9.272" Y="8.75" />
+        <Point X="9.248" Y="8.75" Type="JumpStart" />
+        <Point X="9.082" Y="8.75" Type="JumpEnd" />
+        <Point X="9" Y="8.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.501" Y="-0.037" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>IAAACAREABQAAAAIAAAAgAAgAQAEAAABAAAAAkAAAoI=</HashCode>
+      <FileName>Model\ColorsTheme.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="ColorEnlargeGradient2_" />
+      <Field Name="ColorMainGradient1_" />
+      <Field Name="ColorPlayerSlider_" />
+      <Field Name="ColorPlayerPanelBorderBrush_" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerConceptDesign.Model.INPropertyChanged">
+    <Position X="9.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\INPropertyChanged.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerConceptDesign.Model.Music">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Image_" Type="System.Windows.Media.Imaging.BitmapImage" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11" Y="3.062" />
+        <Point X="11.254" Y="3.062" />
+        <Point X="11.254" Y="6.316" />
+        <Point X="10.312" Y="6.316" />
+        <Point X="10.312" Y="5.941" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.831" Y="0.082" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAQAAAAQABAAAAAgAAAAAAA=</HashCode>
+      <FileName>Model\Music.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Image_" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerConceptDesign.View.Menu.Home" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Menu\Home.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PlayerConceptDesign.View.Menu.Library" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAEAAAAAAAAAAAAAAAAAAAAEAAAAQAAAACAAAIAEBA=</HashCode>
+      <FileName>View\Menu\Library.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PlayerConceptDesign.View.Menu.Likes" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCAAAAAAAAAAAAAAAIAAAABAEABAAQAAAACAAAIAACA=</HashCode>
+      <FileName>View\Menu\Likes.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PlayerConceptDesign.View.Menu.Playlist" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Menu\Playlist.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PlayerConceptDesign.View.Menu.Settings" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAgAAAAAQAAAQAAAAQAAAAAAIAAAQAAAAAAAA=</HashCode>
+      <FileName>View\Menu\Settings.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PlayerConceptDesign.View.MainWindow">
+    <Position X="15" Y="2.75" Width="1.5" />
+    <AssociationLine Name="waveOut" Type="NAudio.Wave.WaveOut" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.5" Y="3.625" />
+        <Point X="17.5" Y="3.625" />
+        <Point X="17.5" Y="3.312" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="reader" Type="NAudio.Wave.Mp3FileReader" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.5" Y="4.062" />
+        <Point X="17.5" Y="4.062" />
+        <Point X="17.5" Y="4.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.271" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQACAAAAAAAAgogAJAQAEQEIIABgAiAkBYCAA0QgJU=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="waveOut" />
+      <Field Name="reader" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerConceptDesign.ViewModel.AplicationWindow">
+    <Position X="5.75" Y="10.5" Width="1.5" />
+    <AssociationLine Name="AplicationMainWindow" Type="PlayerConceptDesign.View.MainWindow" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="10.75" />
+        <Point X="9.5" Y="10.75" />
+        <Point X="9.5" Y="10.103" />
+        <Point X="13" Y="10.103" />
+        <Point X="13" Y="11.236" />
+        <Point X="15.75" Y="11.236" />
+        <Point X="15.75" Y="10.204" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="6.615" Y="0.225" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>ViewModel\AplicationWindow.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="AplicationMainWindow" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerConceptDesign.ViewModel.Cover">
+    <Position X="13.25" Y="6.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="PlayerConceptDesign.ViewModel.Cover.SizeCover">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModel\Cover.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>ViewModel\Cover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConceptDesign.ViewModel.Files">
+    <Position X="5.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAIAAgAAAAAkCACAAAAAAAACAIAAAQAAAAAA=</HashCode>
+      <FileName>ViewModel\Files.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConceptDesign.ViewModel.InvertImage">
+    <Position X="11.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\InvertImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConceptDesign.ViewModel.MusicTemplate">
+    <Position X="7.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAABAAAAAAAAgAAAAIAAIAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>ViewModel\MusicTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConceptDesign.ViewModel.Player">
+    <Position X="9.75" Y="10.25" Width="1.5" />
+    <AssociationLine Name="LastImagePlayPause" Type="System.Windows.Controls.Border" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="10.75" />
+        <Point X="12.875" Y="10.75" />
+        <Point X="12.875" Y="11.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.001" Y="0.83" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAQAIAAAAACgAIBAAAIAAA=</HashCode>
+      <FileName>ViewModel\Player.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LastImagePlayPause" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerConceptDesign.ViewModel.SetColorTheme">
+    <Position X="5.75" Y="3" Width="1.5" />
+    <AssociationLine Name="colorsTheme" Type="PlayerConceptDesign.Model.ColorsTheme" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.562" Y="3" />
+        <Point X="6.562" Y="2.625" />
+        <Point X="8.25" Y="2.625" />
+        <Point X="8.25" Y="3" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.159" Y="0.074" Height="0.182" Width="1.36" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AKAAAAAwAACAAAgACAAIgAgCAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ViewModel\SetColorTheme.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="colorsTheme" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerConceptDesign.App" Collapsed="true">
+    <Position X="16.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerConceptDesign.ApplicationSettings">
+    <Position X="16.75" Y="9.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Cover" Type="System.Collections.Generic.List&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.75" Y="12.375" />
+        <Point X="14.688" Y="12.375" />
+        <Point X="14.688" Y="12.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.718" Y="0.089" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="FilesLike" Type="System.Collections.Generic.List&lt;T&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.179" Y="0.018" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Files" Type="System.Collections.Generic.List&lt;T&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.75" Y="12.5" />
+        <Point X="13.688" Y="12.5" />
+        <Point X="13.688" Y="12.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.593" Y="0.214" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="defaultInstance" Type="PlayerConceptDesign.ApplicationSettings" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.25" Y="11.125" />
+        <Point X="18.5" Y="11.125" />
+        <Point X="18.5" Y="12.375" />
+        <Point X="18.25" Y="12.375" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.409" Y="0.67" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AACAAAAACAAAAggUAAAAoAQAAAIBAAAAAAAAACAADIg=</HashCode>
+      <FileName>ApplicationSettings.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="defaultInstance" />
+      <Property Name="Cover" />
+      <Property Name="FilesLike" />
+      <Property Name="Files" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PlayerConceptDesign.Localization">
+    <Position X="18.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAQACgQCAAICIABCAAhGAECAQUAACACwAAgAACCAKQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NAudio.Wave.WaveOut" Collapsed="true">
+    <Position X="16.75" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NAudio.Wave.Mp3FileReader">
+    <Position X="16.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Collections.Generic.List&lt;T&gt;" Collapsed="true">
+    <Position X="13.5" Y="11.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="System.Collections.Generic.List&lt;T&gt;.Enumerator" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Media.Imaging.BitmapImage" Collapsed="true">
+    <Position X="9.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Windows.Media.Color" Collapsed="true">
+    <Position X="7.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Media.SolidColorBrush" Collapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Controls.Border" Collapsed="true">
+    <Position X="11.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

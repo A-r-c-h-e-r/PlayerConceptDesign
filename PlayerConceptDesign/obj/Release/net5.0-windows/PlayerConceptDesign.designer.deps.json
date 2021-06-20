@@ -1,0 +1,65 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Syncfusion.Licensing/19.1.0.59": {
+        "runtime": {
+          "lib/net5.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "19.1.0.59",
+            "fileVersion": "19.1.0.59"
+          }
+        }
+      },
+      "Syncfusion.Shared.WPF/19.1.0.59": {
+        "dependencies": {
+          "Syncfusion.Licensing": "19.1.0.59"
+        },
+        "runtime": {
+          "lib/net5.0-windows/Syncfusion.Shared.WPF.dll": {
+            "assemblyVersion": "19.1500.0.59",
+            "fileVersion": "19.1500.0.59"
+          }
+        }
+      },
+      "Syncfusion.Tools.WPF/19.1.0.59": {
+        "dependencies": {
+          "Syncfusion.Licensing": "19.1.0.59",
+          "Syncfusion.Shared.WPF": "19.1.0.59"
+        },
+        "runtime": {
+          "lib/net5.0-windows/Syncfusion.Tools.WPF.dll": {
+            "assemblyVersion": "19.1500.0.59",
+            "fileVersion": "19.1500.0.59"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Syncfusion.Licensing/19.1.0.59": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NlRxX/UdQznQu6HC1CGTmGKL0XJyROzCMgGKkIeb80b2KLQ3tvN/ft9UEi0vbn55pDmgbmueEJUF8cYm6GR0CQ==",
+      "path": "syncfusion.licensing/19.1.0.59",
+      "hashPath": "syncfusion.licensing.19.1.0.59.nupkg.sha512"
+    },
+    "Syncfusion.Shared.WPF/19.1.0.59": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aI5zIzt54sPG7pkU81zdxGhK8t2tV3rL7dncsp/fhje+modillWYxbyB/EqECIdGNRHBBlFOeyx6Y+iGuzxmgQ==",
+      "path": "syncfusion.shared.wpf/19.1.0.59",
+      "hashPath": "syncfusion.shared.wpf.19.1.0.59.nupkg.sha512"
+    },
+    "Syncfusion.Tools.WPF/19.1.0.59": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jyBtQbwZDGI5Qpg0yP6dNzknx7AwdDLOqlQUgMxICrqFcvpY2Dz72a/K+deCPtdS4Jh2yTvZ1zy3mNSryQx1EQ==",
+      "path": "syncfusion.tools.wpf/19.1.0.59",
+      "hashPath": "syncfusion.tools.wpf.19.1.0.59.nupkg.sha512"
+    }
+  }
+}
