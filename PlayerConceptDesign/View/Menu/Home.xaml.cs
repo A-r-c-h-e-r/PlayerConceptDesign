@@ -14,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlayerConceptDesign.Settings;
 
 namespace PlayerConceptDesign.View.Menu
 {
@@ -133,7 +134,7 @@ namespace PlayerConceptDesign.View.Menu
 
             Player.Play = (Files.Trim(System.IO.Path.GetFileName(((sender as Border).Background as ImageBrush).ImageSource.ToString()), ".") == "Play") ? false : true;
 
-            AplicationWindow.AplicationMainWindow.Init((sender as Border), ApplicationSettings.Default.Files);
+            AplicationWindow.AplicationMainWindow.Init((sender as Border), SettingsManager.AppSettings.Files);
         }
 
     }

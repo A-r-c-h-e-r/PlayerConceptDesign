@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewmodel="clr-namespace:PlayerConceptDesign.ViewModel"
       xmlns:local="clr-namespace:PlayerConceptDesign"
+      xmlns:localization="clr-namespace:PlayerConceptDesign.Properties.Localization"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Library">
@@ -14,7 +15,7 @@
     </Page.DataContext>
 
     <Grid>
-        <Label Content="{x:Static local:Localization.Library}" FontSize="25" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}" Margin="10,0,0,0"/>
+        <Label Content="{x:Static localization:Localization.Library}" FontSize="25" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}" Margin="10,0,0,0"/>
         <Grid Margin="0,40,0,0">
             <ScrollViewer CanContentScroll="True">
                 <WrapPanel Name="WarpPanelLibrary" >

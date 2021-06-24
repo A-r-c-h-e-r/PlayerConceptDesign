@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using PlayerConceptDesign.Settings;
 
 namespace PlayerConceptDesign.ViewModel
 {
@@ -20,9 +21,9 @@ namespace PlayerConceptDesign.ViewModel
 
         static Player()
         {
-            PlayList = ApplicationSettings.Default.Files;
+            PlayList = SettingsManager.AppSettings.Files;
             Repeat = false;
-            HomePopular = Player.MixNameFile(ApplicationSettings.Default.Files);
+            HomePopular = Player.MixNameFile(SettingsManager.AppSettings.Files);
         }
 
         public static List<string> MixNameFile(List<string> Files)

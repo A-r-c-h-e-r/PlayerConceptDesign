@@ -24,10 +24,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\Dictionary\Colors.xaml">
+    <EmbeddedResource Update="Properties\Localization\Localization.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Localization\Localization.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Dictionaries\Colors.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Dictionary\Styles.xaml">
+    <Page Update="Dictionaries\Styles.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainWindow.xaml">

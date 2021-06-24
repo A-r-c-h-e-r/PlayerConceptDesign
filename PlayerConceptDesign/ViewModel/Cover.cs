@@ -1,6 +1,7 @@
 ﻿using PlayerConceptDesign.Model;
 using System.IO;
 using System.Windows.Media.Imaging;
+using PlayerConceptDesign.Settings;
 
 namespace PlayerConceptDesign.ViewModel
 {
@@ -13,13 +14,13 @@ namespace PlayerConceptDesign.ViewModel
             public double Height
             {
                 get { return Height_; }
-                set { if (value != Height_) Height_ = value; OnPropertyChanged("Height"); }
+                set { if (value != Height_) Height_ = value; OnPropertyChanged(nameof(Height)); }
             }
             private double Width_;
             public double Width
             {
                 get { return Width_; }
-                set { if (value != Width_) Width_ = value; OnPropertyChanged("Width"); }
+                set { if (value != Width_) Width_ = value; OnPropertyChanged(nameof(Width)); }
             }
         }
 
@@ -32,12 +33,12 @@ namespace PlayerConceptDesign.ViewModel
 
         public static void Init()
         {
-            sizeCover = new SizeCover[ApplicationSettings.Default.Files.Count];
-            for (int i = 0; i < ApplicationSettings.Default.Files.Count; i++)
+            sizeCover = new SizeCover[SettingsManager.AppSettings.Files.Count];
+            for (int i = 0; i < SettingsManager.AppSettings.Files.Count; i++)
                 sizeCover[i] = new SizeCover
                 {
-                    Width = ApplicationSettings.Default.SizeCover,
-                    Height = ApplicationSettings.Default.SizeCover * 1.11
+                    Width = SettingsManager.AppSettings.SizeCover,
+                    Height = SettingsManager.AppSettings.SizeCover * 1.11
                 };
         }
 

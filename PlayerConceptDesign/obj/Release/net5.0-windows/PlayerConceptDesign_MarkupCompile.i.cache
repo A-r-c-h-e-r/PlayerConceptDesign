@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Klover\source\repos\PlayerConceptDesign\PlayerConceptDesign\obj\Release\net5.0-windows\
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Release\net5.0-windows\
 PlayerConceptDesign
 none
 false
 TRACE;RELEASE;NET;NET5_0;NETCOREAPP
-C:\Users\Klover\source\repos\PlayerConceptDesign\PlayerConceptDesign\App.xaml
-81579018047
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\App.xaml
+8161831301
 
-151651783198
-196-1708942884
-View\Dictionary\Colors.xaml;View\Dictionary\Styles.xaml;View\MainWindow.xaml;View\Menu\Home.xaml;View\Menu\Library.xaml;View\Menu\Likes.xaml;View\Menu\Playlist.xaml;View\Menu\Settings.xaml;
+23-879338600
+227124254823
+Dictionaries\Colors.xaml;Dictionaries\Styles.xaml;View\MainWindow.xaml;View\Menu\Home.xaml;View\Menu\Library.xaml;View\Menu\Likes.xaml;View\Menu\Playlist.xaml;View\Menu\Settings.xaml;
 
-True
+False
 

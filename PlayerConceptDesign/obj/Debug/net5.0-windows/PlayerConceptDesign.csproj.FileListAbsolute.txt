@@ -134,3 +134,19 @@ C:\Users\SleepySad\Desktop\PlayerConceptDesign\PlayerConceptDesign\bin\Debug\net
 C:\Users\SleepySad\Desktop\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\ru\PlayerConceptDesign.resources.dll
 C:\Users\SleepySad\Desktop\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\PlayerConceptDesign.Localization.resources
 C:\Users\SleepySad\Desktop\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\PlayerConceptDesign.Localization.ru.resources
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\PlayerConceptDesign.csprojAssemblyReference.cache
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\PlayerConceptDesign.csproj.ResolveComReference.cache
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\View\Dictionary\Colors.baml
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\View\MainWindow.g.cs
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\View\Menu\Home.g.cs
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\View\Menu\Library.g.cs
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\View\Menu\Likes.g.cs
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\View\Menu\Playlist.g.cs
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\View\Menu\Settings.g.cs
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\App.g.cs
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\PlayerConceptDesign_MarkupCompile.cache
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\PlayerConceptDesign_MarkupCompile.lref
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\PlayerConceptDesign.dll
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\ref\PlayerConceptDesign.dll
+D:\Visual Studio 2019 Projects\_Repos\PlayerConceptDesign\PlayerConceptDesign\obj\Debug\net5.0-windows\PlayerConceptDesign.pdb

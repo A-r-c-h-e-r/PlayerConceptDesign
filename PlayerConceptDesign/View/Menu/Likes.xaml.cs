@@ -16,6 +16,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlayerConceptDesign.Settings;
 
 namespace PlayerConceptDesign.View.Menu
 {
@@ -37,10 +38,10 @@ namespace PlayerConceptDesign.View.Menu
         private void GenerationFiles()
         {
 
-            for (int i = 0; i < ApplicationSettings.Default.FilesLike.Count; i++)
+            for (int i = 0; i < SettingsManager.AppSettings.FilesLike.Count; i++)
             {
-                CoverFilesLike.Add(Files.GetCoverFile(ApplicationSettings.Default.FilesLike[i]));
-                NameFilesLike.Add(Files.GetNameFile(ApplicationSettings.Default.FilesLike[i]));
+                CoverFilesLike.Add(Files.GetCoverFile(SettingsManager.AppSettings.FilesLike[i]));
+                NameFilesLike.Add(Files.GetNameFile(SettingsManager.AppSettings.FilesLike[i]));
 
                 Binding bindingHeight = new Binding(), bindingWidth = new Binding();
                 bindingHeight.Source = bindingWidth.Source = Cover.sizeCover[i];
@@ -64,18 +65,18 @@ namespace PlayerConceptDesign.View.Menu
                 activeCover.MouseEnter += ActiveCover_MouseEnter;
                 activeCover.MouseLeave += ActiveCover_MouseLeave;
 
-                var imagePlayPause = MusicTemplate.TemplateActiveCoverImagePlayPause(activeCover, ApplicationSettings.Default.FilesLike[i], i);                   
+                var imagePlayPause = MusicTemplate.TemplateActiveCoverImagePlayPause(activeCover, SettingsManager.AppSettings.FilesLike[i], i);                   
                 imagePlayPause.MouseEnter += ImagePlayPauseDelete_MouseEnter;
                 imagePlayPause.MouseLeave += ImagePlayPauseDelete_MouseLeave;
                 imagePlayPause.MouseUp += ImagePlayPause_MouseEnter;
 
-                if (Player.LastImagePlayPause?.DataContext?.ToString() == ApplicationSettings.Default.FilesLike[i])
+                if (Player.LastImagePlayPause?.DataContext?.ToString() == SettingsManager.AppSettings.FilesLike[i])
                 {
                     imagePlayPause.Background = Player.LastImagePlayPause.Background;
                     Player.LastImagePlayPause = imagePlayPause;
                 }
 
-                var imageDelete = MusicTemplate.TemplateActiveCoverImageDelete(activeCover, ApplicationSettings.Default.FilesLike[i], i);
+                var imageDelete = MusicTemplate.TemplateActiveCoverImageDelete(activeCover, SettingsManager.AppSettings.FilesLike[i], i);
                 imageDelete.MouseEnter += ImagePlayPauseDelete_MouseEnter;
                 imageDelete.MouseLeave += ImagePlayPauseDelete_MouseLeave;
                 imageDelete.MouseUp += ImageDelete_MouseEnter;
@@ -126,13 +127,13 @@ namespace PlayerConceptDesign.View.Menu
             };
 
             Player.Play = (Files.Trim(System.IO.Path.GetFileName(((sender as Border).Background as ImageBrush).ImageSource.ToString()), ".") == "Play") ? false : true;
-            AplicationWindow.AplicationMainWindow.Init((sender as Border), ApplicationSettings.Default.FilesLike);
+            AplicationWindow.AplicationMainWindow.Init((sender as Border), SettingsManager.AppSettings.FilesLike);
         }
 
         private void ImageDelete_MouseEnter(object sender, RoutedEventArgs e)
         {
-            ApplicationSettings.Default.FilesLike.Remove((sender as Border).DataContext.ToString());
-            ApplicationSettings.Default.Save();
+            SettingsManager.AppSettings.FilesLike.Remove((sender as Border).DataContext.ToString());
+            SettingsManager.AppSettings.Save();
             this.NavigationService.Refresh();
         }
 

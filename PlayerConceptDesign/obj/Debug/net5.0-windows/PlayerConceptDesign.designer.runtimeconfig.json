@@ -6,9 +6,11 @@
       "version": "5.0.0"
     },
     "additionalProbingPaths": [
-      "C:\\Users\\SleepySad\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\SleepySad\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\TheDima_\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\TheDima_\\.nuget\\packages",
+      "K:\\Visual Studio Dirs\\Shared\\NuGetPackages",
+      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet",
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

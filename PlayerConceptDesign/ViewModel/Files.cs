@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using PlayerConceptDesign.Settings;
 
 namespace PlayerConceptDesign.ViewModel
 {
@@ -13,10 +14,12 @@ namespace PlayerConceptDesign.ViewModel
     {
         public static string[] FilesFormats = new string[] { ".mp3" }; // Можно добавить и другие 
         public static string FileLink { get; private set; }
+        public static List<BitmapImage> Covers { get; private set; }
 
         static Files()
         {
             FileLink = GetFileLink();
+            Covers = GetCoverFile(SettingsManager.AppSettings.Files);
         }
 
         public static bool CheckFileFormat(string fileLink)
@@ -49,10 +52,12 @@ namespace PlayerConceptDesign.ViewModel
 
         public static void SetDataFilesAppSettings(string path)
         {
-            if (path!=null) ApplicationSettings.Default.Files = FindFilesFormats(Directory.GetFiles(ApplicationSettings.Default.Folder = path));
-            ApplicationSettings.Default.Name = GetNameFile(ApplicationSettings.Default.Files);
-            ApplicationSettings.Default.Cover = GetCoverFile(ApplicationSettings.Default.Files);
-            ApplicationSettings.Default.Save();
+            if (path == null)
+                return;
+
+            SettingsManager.AppSettings.Files = FindFilesFormats(Directory.GetFiles(SettingsManager.AppSettings.Folder = path));
+            SettingsManager.AppSettings.Name = GetNameFile(SettingsManager.AppSettings.Files);
+            SettingsManager.AppSettings.Save();
         }
 
         public static string GetFileLink() => Environment.GetCommandLineArgs()[Environment.GetCommandLineArgs().Length-1];
@@ -70,7 +75,7 @@ namespace PlayerConceptDesign.ViewModel
         public static List<string> GetNameFile(List<string> Files)
         {
             List<string> FileNames = new List<string>();
-            for (int i = 0; i < Files.Count(); i++)
+            for (int i = 0; i < Files.Count; i++)
                 FileNames.Add(Trim(Path.GetFileName(Files[i]), "."));
             return FileNames;
         }
@@ -80,17 +85,17 @@ namespace PlayerConceptDesign.ViewModel
         public static List<BitmapImage> GetCoverFile(List<string> Files)
         {
             List<BitmapImage> FileCovers = new List<BitmapImage>();
-            for (int i = 0; i < Files.Count(); i++)
+            Random random = new Random();
+            for (int i = 0; i < Files.Count; i++)
             {
 
                 if (TagLib.File.Create(Files[i]).Tag.Pictures.Length > 0)
                     FileCovers.Add(Cover.GetCoverFile(TagLib.File.Create(Files[i])));
                 else
                 {
-                    Random random = new Random();
                     BitmapImage BitmapImage_ = new BitmapImage();
                     BitmapImage_.BeginInit();
-                    BitmapImage_.UriSource = new Uri("pack://application:,,,/Resources/Cover/" + random.Next(5).ToString() + "cover.png");
+                    BitmapImage_.UriSource = new Uri("pack://application:,,,/Resources/Cover/" + random.Next(6).ToString() + "cover.png");
                     BitmapImage_.EndInit();
                     FileCovers.Add(BitmapImage_);
                 }
@@ -99,7 +104,7 @@ namespace PlayerConceptDesign.ViewModel
         }
         public static BitmapImage GetCoverFile(string File)
         {
-            BitmapImage FileCover = new BitmapImage();
+            BitmapImage FileCover;
             if (TagLib.File.Create(File).Tag.Pictures.Length > 0)
                 FileCover = Cover.GetCoverFile(TagLib.File.Create(File));
             else
@@ -107,7 +112,7 @@ namespace PlayerConceptDesign.ViewModel
                 Random random = new Random();
                 BitmapImage BitmapImage_ = new BitmapImage();
                 BitmapImage_.BeginInit();
-                BitmapImage_.UriSource = new Uri("pack://application:,,,/Resources/Cover/" + random.Next(5).ToString() + "cover.png");
+                BitmapImage_.UriSource = new Uri("pack://application:,,,/Resources/Cover/" + random.Next(6).ToString() + "cover.png");
                 BitmapImage_.EndInit();
                 FileCover = BitmapImage_;
             }
