@@ -14,7 +14,8 @@ namespace PlayerConceptDesign
             SyncfusionLicenseProvider.RegisterLicense(
                 "NDQyNTYyQDMxMzkyZTMxMmUzMGhDMnNRUVlmVUFhMmJjMzcrelNKa0c5Z2NBUVZPWGxRV2FYSlU5UUJYeUk9");
 
-            LogManager.Initialize();
+            LogManager.Startup();
+            LogManager.LoggingShutdown += LogManager_OnLoggingShutdown;
 
             DispatcherUnhandledException += OnDispatcherUnhandledException;
         }
@@ -37,6 +38,11 @@ namespace PlayerConceptDesign
         private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             LogManager.Log.Fatal($"{e.Exception?.GetType().Name ?? "Unknown"} - Message={e.Exception?.Message ?? "Unknown"},HResult={e.Exception?.HResult.ToString() ?? "Unknown"},StackTrace=\n{e.Exception?.StackTrace ?? "Unknown"}");
+        }
+
+        private void LogManager_OnLoggingShutdown(object sender, EventArgs e)
+        {
+            DispatcherUnhandledException -= OnDispatcherUnhandledException;
         }
     }
 }
