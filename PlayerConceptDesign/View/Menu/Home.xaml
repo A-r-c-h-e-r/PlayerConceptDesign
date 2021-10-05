@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewmodel="clr-namespace:PlayerConceptDesign.ViewModel"
       xmlns:local="clr-namespace:PlayerConceptDesign"
+      xmlns:localization="clr-namespace:PlayerConceptDesign.Properties.Localization"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Home"  >
@@ -13,7 +14,7 @@
         <viewmodel:SetColorTheme/>
     </Page.DataContext>
     <Grid Margin="10,0,10,0">
-        <Label Content="{x:Static local:Localization.Home}" FontSize="25" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}"/>
+        <Label Content="{x:Static localization:Localization.Home}" FontSize="25" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}"/>
         <Grid Margin="20,50,20,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" MinHeight="230"/>
@@ -24,7 +25,7 @@
                     <ColumnDefinition Width="6*" />
                     <ColumnDefinition Width="4*" MaxWidth="445" />
                 </Grid.ColumnDefinitions>
-                <Label Content="{x:Static local:Localization.HomePopular}" FontSize="27" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}" Opacity="0.75"/>
+                <Label Content="{x:Static localization:Localization.HomePopular}" FontSize="27" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}" Opacity="0.75"/>
                 <Grid  Margin="0,60,0,20" >
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -95,7 +96,7 @@
 
             </Grid>
             <Grid Grid.Row="1" Opacity="0.75" Name="Grid_" Visibility="Collapsed">
-                <Label Content="{x:Static local:Localization.HomeTheLast}" FontSize="20" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}" Margin="0,-40,0,0"/>
+                <Label Content="{x:Static localization:Localization.HomeTheLast}" FontSize="20" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}" Margin="0,-40,0,0"/>
                 <WrapPanel x:Name="WarpPanelLikes" Orientation="Horizontal" Margin="5" >
 
                 </WrapPanel>

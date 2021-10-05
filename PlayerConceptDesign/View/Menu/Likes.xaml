@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PlayerConceptDesign"
-       xmlns:viewmodel="clr-namespace:PlayerConceptDesign.ViewModel"
-          
+      xmlns:viewmodel="clr-namespace:PlayerConceptDesign.ViewModel"
+      xmlns:localization="clr-namespace:PlayerConceptDesign.Properties.Localization"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Likes">
@@ -14,7 +14,7 @@
         <viewmodel:SetColorTheme/>
     </Page.DataContext>
     <Grid>
-        <Label Content="{x:Static local:Localization.Likes}" FontSize="25" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}" Margin="10,0,0,0"/>
+        <Label Content="{x:Static localization:Localization.Likes}" FontSize="25" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}" Margin="10,0,0,0"/>
         <Grid Margin="0,40,0,0">
             <ScrollViewer x:Name="ScrollViewer_" Margin="0,0,0,0" CanContentScroll="True">
                 <WrapPanel Name="WarpPanelLikes">

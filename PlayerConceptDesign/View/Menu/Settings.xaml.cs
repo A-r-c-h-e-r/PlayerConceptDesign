@@ -18,6 +18,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PlayerConceptDesign.Settings;
+using Localization = PlayerConceptDesign.Properties.Localization.Localization;
 
 
 namespace PlayerConceptDesign.View.Menu
@@ -27,35 +29,35 @@ namespace PlayerConceptDesign.View.Menu
         public Settings()
         {
             InitializeComponent();
-            LabelActiveTheme.Content = ApplicationSettings.Default.Theme;
-            SliderAnimationSpeed.Value = ApplicationSettings.Default.SizeCover;
-            CheckBoxShowAlbum.Content = ((CheckBoxShowAlbum.IsChecked = ApplicationSettings.Default.MenuAnimation) == true) ? "On" : "Off";
-            LabelLanguage.Content = (ApplicationSettings.Default.Language == "en-US") ? Localization.SettingsEnglish : Localization.SettingsRussian;
+            LabelActiveTheme.Content = SettingsManager.AppSettings.Theme;
+            SliderAnimationSpeed.Value = SettingsManager.AppSettings.SizeCover;
+            CheckBoxShowAlbum.Content = ((CheckBoxShowAlbum.IsChecked = SettingsManager.AppSettings.MenuAnimation) == true) ? "On" : "Off";
+            LabelLanguage.Content = (SettingsManager.AppSettings.Language == "en-US") ? Localization.SettingsEnglish : Localization.SettingsRussian;
         }
         private void ThemeButtonClick(object sender, RoutedEventArgs e)
         {
           
-            SetColorTheme.LastColorTheme = ApplicationSettings.Default.Theme;
-            SetColorTheme.SetActualTheme(ApplicationSettings.Default.Theme = (string)(sender as Button).Name);
+            SetColorTheme.LastColorTheme = SettingsManager.AppSettings.Theme;
+            SetColorTheme.SetActualTheme(SettingsManager.AppSettings.Theme = (string)(sender as Button).Name);
             //     SetColorTheme.InvertImageFromActualTheme((string)(sender as Button).Name);
-            ApplicationSettings.Default.InvertImge = ((string)(sender as Button).Name) == "Light" ? true : false;
-            ApplicationSettings.Default.Save();
+            SettingsManager.AppSettings.InvertImage = ((string)(sender as Button).Name) == "Light" ? true : false;
+            SettingsManager.AppSettings.Save();
 
-            LabelActiveTheme.Content = ApplicationSettings.Default.Theme;
+            LabelActiveTheme.Content = SettingsManager.AppSettings.Theme;
           
         }
 
         private void LanguageButtonClick(object sender, RoutedEventArgs e)
         {
-            if ((((string)(sender as Button).Content == Localization.SettingsEnglish) ? "en-US" : "ru-RU") != ApplicationSettings.Default.Language)
+            if ((((string)(sender as Button).Content == Localization.SettingsEnglish) ? "en-US" : "ru-RU") != SettingsManager.AppSettings.Language)
             {
-                ApplicationSettings.Default.Language = ((string)(sender as Button).Content == Localization.SettingsEnglish) ? "en-US" : "ru-RU";
-                ApplicationSettings.Default.Save();
+                SettingsManager.AppSettings.Language = ((string)(sender as Button).Content == Localization.SettingsEnglish) ? "en-US" : "ru-RU";
+                SettingsManager.AppSettings.Save();
 
-                LabelLanguage.Content = (ApplicationSettings.Default.Language == "en-US") ? Localization.SettingsEnglish : Localization.SettingsRussian;
+                LabelLanguage.Content = (SettingsManager.AppSettings.Language == "en-US") ? Localization.SettingsEnglish : Localization.SettingsRussian;
 
                 System.Threading.Thread.CurrentThread.CurrentUICulture =
-                    System.Globalization.CultureInfo.GetCultureInfo(ApplicationSettings.Default.Language);
+                    System.Globalization.CultureInfo.GetCultureInfo(SettingsManager.AppSettings.Language);
                
                  AplicationWindow.AplicationMainWindow.RefreshMainWindow();
             }
@@ -64,13 +66,13 @@ namespace PlayerConceptDesign.View.Menu
         private void CheckBoxShowAlbumClick(object sender, RoutedEventArgs e)
         {
             (sender as CheckBox).Content = ((sender as CheckBox).IsChecked == true) ? Localization.SettingsOn : Localization.SettingsOff;
-            ApplicationSettings.Default.MenuAnimation = (bool)(sender as CheckBox).IsChecked;
-            ApplicationSettings.Default.SizeMenu = (ApplicationSettings.Default.MenuAnimation == true) ? 33 : 110;
-            ApplicationSettings.Default.Save();
+            SettingsManager.AppSettings.MenuAnimation = (bool)(sender as CheckBox).IsChecked;
+            SettingsManager.AppSettings.SizeMenu = (SettingsManager.AppSettings.MenuAnimation == true) ? 33 : 110;
+            SettingsManager.AppSettings.Save();
 
             var animation = new ThicknessAnimation();
-            animation.To = new Thickness((ApplicationSettings.Default.MenuAnimation == true) ? 33 : 110, 0, 0, 0);
-            animation.Duration = TimeSpan.FromSeconds((ApplicationSettings.Default.MenuAnimation == true) ? 0.2 : 0.5);
+            animation.To = new Thickness((SettingsManager.AppSettings.MenuAnimation == true) ? 33 : 110, 0, 0, 0);
+            animation.Duration = TimeSpan.FromSeconds((SettingsManager.AppSettings.MenuAnimation == true) ? 0.2 : 0.5);
             animation.EasingFunction = new PowerEase() { Power = 6 };
             AplicationWindow.AplicationMainWindow.MainFrame.BeginAnimation(MarginProperty, animation);
 
@@ -81,9 +83,9 @@ namespace PlayerConceptDesign.View.Menu
         private bool crutch = false;
         private void SliderAnimationSpeed_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            ApplicationSettings.Default.SizeCover = (sender as Slider).Value;
-            ApplicationSettings.Default.Save();
-            for (int i = 0; i < ApplicationSettings.Default.Files.Count; i++)
+            SettingsManager.AppSettings.SizeCover = (sender as Slider).Value;
+            SettingsManager.AppSettings.Save();
+            for (int i = 0; i < SettingsManager.AppSettings.Files.Count; i++)
             {
                 Cover.sizeCover[i].Height = (sender as Slider).Value * 1.11;
                 Cover.sizeCover[i].Width = (sender as Slider).Value;
@@ -109,9 +111,9 @@ namespace PlayerConceptDesign.View.Menu
         private void SliderAnimationSpeed_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             (sender as Slider).Value += Convert.ToInt32((e.Delta > 0) ? (sender as Slider).Maximum / 30 : -(sender as Slider).Maximum / 30);
-            ApplicationSettings.Default.SizeCover = (sender as Slider).Value;
-            ApplicationSettings.Default.Save();
-            for (int i = 0; i < ApplicationSettings.Default.Files.Count; i++)
+            SettingsManager.AppSettings.SizeCover = (sender as Slider).Value;
+            SettingsManager.AppSettings.Save();
+            for (int i = 0; i < SettingsManager.AppSettings.Files.Count; i++)
             {
                 Cover.sizeCover[i].Height = (sender as Slider).Value * 1.11;
                 Cover.sizeCover[i].Width = (sender as Slider).Value;

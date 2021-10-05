@@ -6,11 +6,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:viewmodel="clr-namespace:PlayerConceptDesign.ViewModel"
         xmlns:local="clr-namespace:PlayerConceptDesign"
+        xmlns:localization="clr-namespace:PlayerConceptDesign.Properties.Localization"
+        xmlns:settings="clr-namespace:PlayerConceptDesign.Settings"
         mc:Ignorable="d" 
         Title="Lite audio player"
-        Icon="pack://application:,,,/Resources/Icon/icon_aplication.ico"
-        Height="600" Width="1000" MinHeight="450" MinWidth="700"
-        Deactivated="Window_Deactivated" KeyUp="Window_KeyUp" SizeChanged="Window_SizeChanged" >
+        Icon="pack://application:,,,/Resources/Icons/icon_application.ico"
+        MinHeight="450" MinWidth="700"
+        Height="600" Width="1000"
+        KeyUp="Window_KeyUp"
+        SizeChanged="Window_SizeChanged"
+        Deactivated="Window_Deactivated"
+        Closed="Window_Closed">
 
     <Window.DataContext>
         <viewmodel:SetColorTheme/>
@@ -27,20 +33,20 @@
 
                 <Frame Margin="133,0,0,0" x:Name="MainFrame" NavigationUIVisibility="Hidden" Opacity="0" Source="pack://application:,,,/View/Menu/Home.xaml" Navigated="MainFrame_Navigated" />
                 <Border x:Name="MenuPanel" HorizontalAlignment="Left" Background="{Binding colorsTheme.ColorMenu, Mode=TwoWay}" CornerRadius="0,8,8,0" Opacity="0.35"
-                    Width="{Binding Source={x:Static local:ApplicationSettings.Default}, Path=SizeMenu, Mode=TwoWay}" MouseEnter="MenuPanel_MouseEnter" MouseLeave="MenuPanel_MouseLeave">
+                    Width="{Binding Source={x:Static settings:SettingsManager.AppSettings}, Path=SizeMenu, Mode=TwoWay}" MouseEnter="MenuPanel_MouseEnter" MouseLeave="MenuPanel_MouseLeave">
                     <Grid>
                         <Border CornerRadius="0,8,8,0" Opacity="0.5">
                         </Border>
                         <Grid  Margin="3,0,0,0" >
-                            <syncfusion:ButtonAdv x:Name="Home" VerticalAlignment="Top" Margin="0,5,0,0"  Height="25" Width="105" Label="{x:Static local:Localization.Home}" SmallIcon="pack://application:,,,/Resources/Menu/Images/home.png"
+                            <syncfusion:ButtonAdv x:Name="Home" VerticalAlignment="Top" Margin="0,5,0,0"  Height="25" Width="105" Label="{x:Static localization:Localization.Home}" SmallIcon="pack://application:,,,/Resources/Menu/Images/home.png"
                                               Style="{DynamicResource StyleButtonMenu}" Click="MenuButton_Click" MouseEnter="MenuButton_MouseEnter" MouseLeave="MenuButton_MouseLeave" />
-                            <syncfusion:ButtonAdv x:Name="Library" VerticalAlignment="Top"  Margin="0,35,0,0" Height="25" Width="105" Label="{x:Static local:Localization.Library}" SmallIcon="pack://application:,,,/Resources/Menu/Images/library.png" 
+                            <syncfusion:ButtonAdv x:Name="Library" VerticalAlignment="Top"  Margin="0,35,0,0" Height="25" Width="105" Label="{x:Static localization:Localization.Library}" SmallIcon="pack://application:,,,/Resources/Menu/Images/library.png" 
                                               Style="{DynamicResource StyleButtonMenu}" Click="MenuButton_Click" MouseEnter="MenuButton_MouseEnter" MouseLeave="MenuButton_MouseLeave"/>
-                            <syncfusion:ButtonAdv x:Name="Playlist" VerticalAlignment="Top"  Margin="0,95,0,0" Height="25" Width="105" Label="{x:Static local:Localization.Playlist}" SmallIcon="pack://application:,,,/Resources/Menu/Images/playlist.png" 
+                            <syncfusion:ButtonAdv x:Name="Playlist" VerticalAlignment="Top"  Margin="0,95,0,0" Height="25" Width="105" Label="{x:Static localization:Localization.Playlist}" SmallIcon="pack://application:,,,/Resources/Menu/Images/playlist.png" 
                                               Style="{DynamicResource StyleButtonMenu}" Click="MenuButton_Click" MouseEnter="MenuButton_MouseEnter" MouseLeave="MenuButton_MouseLeave"  Visibility="Collapsed"/>
-                            <syncfusion:ButtonAdv x:Name="Likes" VerticalAlignment="Top"  Margin="0,65,0,0" Height="25" Width="105" Label="{x:Static local:Localization.Likes}" SmallIcon="pack://application:,,,/Resources/Menu/Images/likes.png" 
+                            <syncfusion:ButtonAdv x:Name="Likes" VerticalAlignment="Top"  Margin="0,65,0,0" Height="25" Width="105" Label="{x:Static localization:Localization.Likes}" SmallIcon="pack://application:,,,/Resources/Menu/Images/likes.png" 
                                               Style="{DynamicResource StyleButtonMenu}" Click="MenuButton_Click" MouseEnter="MenuButton_MouseEnter" MouseLeave="MenuButton_MouseLeave" />
-                            <syncfusion:ButtonAdv x:Name="Settings" VerticalAlignment="Bottom"  Margin="0,0,0,5" Height="25" Width="105" Label="{x:Static local:Localization.Settings}" SmallIcon="pack://application:,,,/Resources/Menu/Images/settings.png" 
+                            <syncfusion:ButtonAdv x:Name="Settings" VerticalAlignment="Bottom"  Margin="0,0,0,5" Height="25" Width="105" Label="{x:Static localization:Localization.Settings}" SmallIcon="pack://application:,,,/Resources/Menu/Images/settings.png" 
                                               Style="{DynamicResource StyleButtonMenu}" Click="MenuButton_Click" MouseEnter="MenuButton_MouseEnter" MouseLeave="MenuButton_MouseLeave" />
                         </Grid>
                         <Border x:Name="InfoBorder" Background="{Binding colorsTheme.ColorInfoBorder, Mode=TwoWay}" Height="25" Width="3" 
@@ -52,7 +58,7 @@
 
             <Border Grid.Row="1" Background="{Binding colorsTheme.ColorPlayerPanel, Mode=TwoWay}" Opacity="0.7"
                 BorderBrush="{Binding colorsTheme.ColorPlayerPanelBorderBrush, Mode=TwoWay}" BorderThickness="0,1,0,0">
-                <!--<Label Name="label" Foreground="White" Content="{Binding Source={x:Static local:ApplicationSettings.Default}, Path=SizeMenu, Mode=TwoWay}"/>-->
+                <!--<Label Name="label" Foreground="White" Content="{Binding Source={x:Static local:SettingsManager.AppSettings}, Path=SizeMenu, Mode=TwoWay}"/>-->
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" x:Name="StackPanelPlayerInfo" Visibility="Hidden">
                         <Border x:Name="BorderImagePlayerCover" Background="Black" CornerRadius="5" Width="40" Height="40" Margin="10,0,0,0" >
@@ -129,7 +135,7 @@
                             <Grid Grid.Column="1">
                                 <syncfusion:ButtonAdv x:Name="ButtonAdvPlayerVoice" Label="voice0" HorizontalAlignment="Left"   Width="17" Height="17" Style="{StaticResource StyleButtonAdvPlayer}"
                                           Margin="0,0,10,0" SmallIcon="pack://application:,,,/Resources/Player/voice0.png" Opacity="0.65" Click="ButtonAdvPlayerVoice_Click" />
-                                <Slider x:Name="SliderPlayerVoice" Minimum="0" Maximum="1" Value="{Binding Source={x:Static local:ApplicationSettings.Default}, Path=Voice, Mode=TwoWay}" TickFrequency="0.001" VerticalAlignment="Center"
+                                <Slider x:Name="SliderPlayerVoice" Minimum="0" Maximum="1" Value="{Binding Source={x:Static settings:SettingsManager.AppSettings}, Path=Voice, Mode=TwoWay}" TickFrequency="0.001" VerticalAlignment="Center"
                                     Stylus.IsPressAndHoldEnabled="False"  IsSnapToTickEnabled="True" MinWidth="7"  MinHeight="14"  IsMoveToPointEnabled="True"
                                     Margin="20,0,30,0" BorderBrush="#A0A0A0" Background="{Binding colorsTheme.ColorPlayerSlider, Mode=TwoWay}" Style="{StaticResource StyleSlider}" ValueChanged="SliderPlayerVoice_ValueChanged" Loaded="SliderPlayerVoice_Loaded" PreviewMouseWheel="SliderPlayerVoice_PreviewMouseWheel"  />
                                 <syncfusion:ButtonAdv x:Name="ButtonAdvPlayerEnlarge" Label="enlarge" HorizontalAlignment="Right"  Width="15" Height="15" Style="{StaticResource StyleButtonAdvPlayer}"

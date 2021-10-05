@@ -12,10 +12,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using PlayerConceptDesign.Settings;
 
 
 // - // - // - // - // - // - // - // - // - // - // - // - // - // - 
@@ -23,13 +23,13 @@ using System.Windows.Threading;
 
 //this.Resources["buttonBrush"] = new SolidColorBrush(Colors.LimeGreen);
 //MessageBox.Show(settings.Theme);
-//TagLib.File tagFile = TagLib.File.Create(ApplicationSettings.Default.Files[0]);
-//MessageBox.Show(TagLib.File.Create(ApplicationSettings.Default.Files[0]).Tag.Subtitle);
-//MessageBox.Show(Path.GetFileName(ApplicationSettings.Default.Files[5]));
+//TagLib.File tagFile = TagLib.File.Create(SettingsManager.AppSettings.Files[0]);
+//MessageBox.Show(TagLib.File.Create(SettingsManager.AppSettings.Files[0]).Tag.Subtitle);
+//MessageBox.Show(Path.GetFileName(SettingsManager.AppSettings.Files[5]));
 
 
 
-//var reader = new Mp3FileReader(ApplicationSettings.Default.Files[0]);
+//var reader = new Mp3FileReader(SettingsManager.AppSettings.Files[0]);
 //var waveOut = new WaveOut(); // or WaveOutEvent()
 //waveOut.Init(reader);
 //waveOut.Play();
@@ -42,31 +42,59 @@ namespace PlayerConceptDesign.View
 {
     public partial class MainWindow : Window
     {
+        private static readonly object InstanceSyncRoot = new object();
+        private static volatile MainWindow _instance;
+        public static MainWindow Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (InstanceSyncRoot)
+                    {
+                        if (_instance == null)
+                            _instance = new MainWindow();
+                    }
+                }
+
+                return _instance;
+            }
+        }
 
         public MainWindow()
         {
-            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(ApplicationSettings.Default.Language);
+            Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(SettingsManager.AppSettings.Language);
 
             InitializeComponent();
+
+            _instance = this;
+
+            Width = SettingsManager.AppSettings.WindowWidth;
+            Height = SettingsManager.AppSettings.WindowHeight;
+            WindowStartupLocation = WindowStartupLocation.Manual;
+            Left = SettingsManager.AppSettings.WindowPositionX - (Width / 2.0);
+            Top = SettingsManager.AppSettings.WindowPositionY - (Height / 2.0);
+            WindowState = (WindowState)SettingsManager.AppSettings.WindowState;
 
             AplicationWindow.AplicationMainWindow = this;
             Application.Current.MainWindow = AplicationWindow.AplicationMainWindow;
 
-            SetColorTheme.SetActualTheme(ApplicationSettings.Default.Theme);
+            SetColorTheme.SetActualTheme(SettingsManager.AppSettings.Theme);
 
-            MainFrame.Margin = new Thickness((ApplicationSettings.Default.MenuAnimation == true) ? 33 : 115, 0, 0, 0);
+            MainFrame.Margin = new Thickness((SettingsManager.AppSettings.MenuAnimation == true) ? 33 : 115, 0, 0, 0);
             RenderOptions.SetBitmapScalingMode(this, BitmapScalingMode.Fant);
 
             if (Files.CheckFileFormat(Files.FileLink))
                 Files.SetDataFilesAppSettings(Files.Trim(Files.FileLink, "\\"));
-            else Files.SetDataFilesAppSettings(null);
+            else
+                Files.SetDataFilesAppSettings(null);
 
         }
 
         public void RefreshMainWindow()
         {
-            if (ApplicationSettings.Default.Theme != "Light")
-                SetColorTheme.LastColorTheme = ApplicationSettings.Default.Theme;
+            if (SettingsManager.AppSettings.Theme != "Light")
+                SetColorTheme.LastColorTheme = SettingsManager.AppSettings.Theme;
 
             waveOut.Stop();
 
@@ -83,6 +111,17 @@ namespace PlayerConceptDesign.View
 
             this.Close();
 
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            SettingsManager.AppSettings.WindowWidth = Width;
+            SettingsManager.AppSettings.WindowHeight = Height;
+            SettingsManager.AppSettings.WindowPositionX = Left + (Width / 2.0);
+            SettingsManager.AppSettings.WindowPositionY = Top + (Height / 2.0);
+            SettingsManager.AppSettings.WindowState = (int)WindowState;
+
+            SettingsManager.AppSettings.Save();
         }
 
         private bool FirstWindowDeactivated = false;
@@ -172,7 +211,7 @@ namespace PlayerConceptDesign.View
 
         public void MenuPanel_MouseEnter(object sender, MouseEventArgs e) => AnimationMenuPanel(115, 0.85, 0.5);
 
-        public void MenuPanel_MouseLeave(object sender, MouseEventArgs e) => AnimationMenuPanel(ApplicationSettings.Default.SizeMenu, 0.35, 0.2);
+        public void MenuPanel_MouseLeave(object sender, MouseEventArgs e) => AnimationMenuPanel(SettingsManager.AppSettings.SizeMenu, 0.35, 0.2);
 
         private void OpasityObject(double from, double to, double time, object obj)
         {
@@ -208,7 +247,7 @@ namespace PlayerConceptDesign.View
                  : new BitmapImage(new Uri($"pack://application:,,,/Resources/Player/play.png"));
 
             (sender as ButtonAdv).Label = ((sender as ButtonAdv).Label == "play") ? "pause" : "play";
-            if (ApplicationSettings.Default.Theme == "Light")
+            if (SettingsManager.AppSettings.Theme == "Light")
                 (sender as ButtonAdv).SmallIcon = InvertImage.Invert((BitmapImage)(sender as ButtonAdv).SmallIcon, true);
 
             Player.InfoPathImage = ((sender as ButtonAdv).Label == "play") ? "pack://application:,,,/Resources/Player/pause.png" : "pack://application:,,,/Resources/Player/play.png";
@@ -231,17 +270,17 @@ namespace PlayerConceptDesign.View
 
                 ButtonAdvPlayerVoice.SmallIcon = new BitmapImage(new Uri($"pack://application:,,,/Resources/Player/voice{GetStationValueVoice(SliderPlayerVoice.Value)}.png"));
             }
-            ApplicationSettings.Default.Voice = SliderPlayerVoice.Value;
-            ApplicationSettings.Default.Save();
+            SettingsManager.AppSettings.Voice = SliderPlayerVoice.Value;
+            SettingsManager.AppSettings.Save();
 
-            if (ApplicationSettings.Default.Theme == "Light") ButtonAdvPlayerVoice.SmallIcon = InvertImage.Invert((BitmapImage)ButtonAdvPlayerVoice.SmallIcon, (check));
+            if (SettingsManager.AppSettings.Theme == "Light") ButtonAdvPlayerVoice.SmallIcon = InvertImage.Invert((BitmapImage)ButtonAdvPlayerVoice.SmallIcon, (check));
             waveOut.Volume = (float)SliderPlayerVoice.Value;
             check = true;
         }
 
         private void SliderPlayerVoice_Loaded(object sender, RoutedEventArgs e)
         {
-            if (ApplicationSettings.Default.Theme == "Light") ButtonAdvPlayerVoice.SmallIcon = InvertImage.Invert((CachedBitmap)ButtonAdvPlayerVoice.SmallIcon, (SliderPlayerVoice.Value > 0) ? true : false);
+            if (SettingsManager.AppSettings.Theme == "Light") ButtonAdvPlayerVoice.SmallIcon = InvertImage.Invert((CachedBitmap)ButtonAdvPlayerVoice.SmallIcon, (SliderPlayerVoice.Value > 0) ? true : false);
         }
 
         private int GetStationValueVoice(double value)
@@ -264,7 +303,7 @@ namespace PlayerConceptDesign.View
             {
                 Player.ActualPlayingMusicList = ActualPlayingMusicListLast;
                 (sender as ButtonAdv).Effect = null;
-                Player.PlayList = ApplicationSettings.Default.Files;
+                Player.PlayList = SettingsManager.AppSettings.Files;
                 return;
             }
 
@@ -272,7 +311,7 @@ namespace PlayerConceptDesign.View
             (sender as ButtonAdv).Effect = EffectColorBackLight.Effect;
 
             ActualPlayingMusicListLast = Player.ActualPlayingMusicList;
-            if ((sender as ButtonAdv).Name == "ButtonAdvPlayerRandom") Player.ActualPlayingMusicList = Player.MixNameFile(ApplicationSettings.Default.Files);
+            if ((sender as ButtonAdv).Name == "ButtonAdvPlayerRandom") Player.ActualPlayingMusicList = Player.MixNameFile(SettingsManager.AppSettings.Files);
             Player.Repeat = ((sender as ButtonAdv).Name == "ButtonAdvPlayerRepeat") ? true : false;
 
         }
@@ -324,7 +363,7 @@ namespace PlayerConceptDesign.View
                         this.Dispatcher.Invoke(() =>
                         {
                             AnimationMarginEnlarge(new Thickness(this.ActualWidth, this.ActualHeight, this.ActualWidth, this.ActualHeight),
-                                                   new Thickness(this.ActualWidth / 10, this.ActualHeight / 10, this.ActualWidth / 10, this.ActualHeight / 10), BorderEnlarge, 0.6);
+                                new Thickness(this.ActualWidth / 10, this.ActualHeight / 10, this.ActualWidth / 10, this.ActualHeight / 10), BorderEnlarge, 0.6);
                             AnimationOpacityEnlarge(0, 1, BorderEnlarge, 0.6);
                         });
                         Thread.Sleep(600);
@@ -332,7 +371,7 @@ namespace PlayerConceptDesign.View
                         {
                             AnimationOpacityEnlarge(0, 1, ViewboxPlayerEnlarge, 0.4);
                         });
-                    });
+                    }).ConfigureAwait(true);
                 }
             }
             else
@@ -348,7 +387,7 @@ namespace PlayerConceptDesign.View
                         {
                             GridEnlarge.Visibility = Visibility.Hidden;
                         });
-                    });
+                    }).ConfigureAwait(true);
                 }
 
             }
@@ -371,7 +410,7 @@ namespace PlayerConceptDesign.View
                         {
                             GridEnlarge.Visibility = Visibility.Hidden;
                         });
-                    });
+                    }).ConfigureAwait(true);
                 }
             }
         }
@@ -389,9 +428,9 @@ namespace PlayerConceptDesign.View
             StackPanelPlayerInfo.Visibility = Visibility.Visible;
             BorderImagePlayerCover.Background = new ImageBrush()
             {
-                ImageSource = ApplicationSettings.Default.Cover[(int)border.Tag]
+                ImageSource = Files.Covers[(int)border.Tag]
             };
-            ImageAudio.ImageSource = ApplicationSettings.Default.Cover[(int)border.Tag];
+            ImageAudio.ImageSource = Files.Covers[(int)border.Tag];
 
             string NameSong = Files.Trim(System.IO.Path.GetFileName(border.DataContext.ToString()), ".");
             LabelNameSong.Content = Files.Trim(NameSong, "-");
@@ -403,13 +442,13 @@ namespace PlayerConceptDesign.View
                 LabelSubtitleSong.Content = "";
             }
             bool check = false;
-            for (int i = 0; i < ApplicationSettings.Default.FilesLike.Count; i++)
-                if (ApplicationSettings.Default.FilesLike[i] == border.DataContext.ToString()) { check = true; break; }
+            for (int i = 0; i < SettingsManager.AppSettings.FilesLike.Count; i++)
+                if (SettingsManager.AppSettings.FilesLike[i] == border.DataContext.ToString()) { check = true; break; }
             LikeStatus.SmallIcon = (ImageSource)new ImageSourceConverter().ConvertFromString((check) ? "pack://application:,,,/Resources/Player/like_active.png" : "pack://application:,,,/Resources/Player/Like.png");
 
 
             ButtonAdvPlayerPlayPause.SmallIcon = (border.Background as ImageBrush).ImageSource;
-            ButtonAdvPlayerPlayPause.SmallIcon = InvertImage.Invert((BitmapSource)ButtonAdvPlayerPlayPause.SmallIcon, (ApplicationSettings.Default.Theme == "Light") ? true : false);
+            ButtonAdvPlayerPlayPause.SmallIcon = InvertImage.Invert((BitmapSource)ButtonAdvPlayerPlayPause.SmallIcon, (SettingsManager.AppSettings.Theme == "Light") ? true : false);
 
             NewSong = (Player.ActualPlayingMusic != border.DataContext.ToString() || Player.ActualPlayingMusic == null) ? true : false;
             Player.ActualPlayingMusic = border.DataContext.ToString();
@@ -474,10 +513,10 @@ namespace PlayerConceptDesign.View
                 }
 
                 bool check = false;
-                for (int i = 0; i < ApplicationSettings.Default.FilesLike.Count; i++)
-                    if (ApplicationSettings.Default.FilesLike[i] == Player.ActualPlayingMusicList[Player.ActualPlayingMusicIndex]) { check = true; break; }
+                for (int i = 0; i < SettingsManager.AppSettings.FilesLike.Count; i++)
+                    if (SettingsManager.AppSettings.FilesLike[i] == Player.ActualPlayingMusicList[Player.ActualPlayingMusicIndex]) { check = true; break; }
                 LikeStatus.SmallIcon = (ImageSource)new ImageSourceConverter().ConvertFromString((check) ? "pack://application:,,,/Resources/Player/like_active.png" : "pack://application:,,,/Resources/Player/Like.png");
-                LikeStatus.SmallIcon = InvertImage.Invert((BitmapSource)LikeStatus.SmallIcon, (ApplicationSettings.Default.Theme == "Light") ? true : false);
+                LikeStatus.SmallIcon = InvertImage.Invert((BitmapSource)LikeStatus.SmallIcon, (SettingsManager.AppSettings.Theme == "Light") ? true : false);
             }
         }
 

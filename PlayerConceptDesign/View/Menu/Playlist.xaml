@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PlayerConceptDesign"
       xmlns:viewmodel="clr-namespace:PlayerConceptDesign.ViewModel"
+      xmlns:localization="clr-namespace:PlayerConceptDesign.Properties.Localization"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Playlist">
@@ -14,6 +15,6 @@
     </Page.DataContext>
 
     <Grid Margin="10,0,0,0">
-        <Label Content="{x:Static local:Localization.Playlist}" FontSize="25" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}"/>
+        <Label Content="{x:Static localization:Localization.Playlist}" FontSize="25" FontStretch="Medium" Foreground="{Binding colorsTheme.ColorForeground, Mode=TwoWay}"/>
     </Grid>
 </Page>

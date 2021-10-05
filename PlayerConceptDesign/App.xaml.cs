@@ -1,27 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
+using PlayerConceptDesign.Settings;
+using RIS.Logging;
+using Syncfusion.Licensing;
 
 namespace PlayerConceptDesign
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
-    
         public App()
         {
-          
+            SyncfusionLicenseProvider.RegisterLicense(
+                "NDQyNTYyQDMxMzkyZTMxMmUzMGhDMnNRUVlmVUFhMmJjMzcrelNKa0c5Z2NBUVZPWGxRV2FYSlU5UUJYeUk9");
 
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDQyNTYyQDMxMzkyZTMxMmUzMGhDMnNRUVlmVUFhMmJjMzcrelNKa0c5Z2NBUVZPWGxRV2FYSlU5UUJYeUk9");
-       
+            LogManager.Startup();
+            LogManager.LoggingShutdown += LogManager_OnLoggingShutdown;
 
+            DispatcherUnhandledException += OnDispatcherUnhandledException;
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            LogManager.DeleteLogs(SettingsManager.AppSettings
+                .LogRetentionDaysPeriod);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            SettingsManager.AppSettings.Save();
+
+            base.OnExit(e);
+        }
+
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            LogManager.Log.Fatal($"{e.Exception?.GetType().Name ?? "Unknown"} - Message={e.Exception?.Message ?? "Unknown"},HResult={e.Exception?.HResult.ToString() ?? "Unknown"},StackTrace=\n{e.Exception?.StackTrace ?? "Unknown"}");
+        }
+
+        private void LogManager_OnLoggingShutdown(object sender, EventArgs e)
+        {
+            DispatcherUnhandledException -= OnDispatcherUnhandledException;
         }
     }
 }

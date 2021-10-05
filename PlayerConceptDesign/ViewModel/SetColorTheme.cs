@@ -1,6 +1,7 @@
 ﻿using PlayerConceptDesign.Model;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using PlayerConceptDesign.Settings;
 using static PlayerConceptDesign.ViewModel.AplicationWindow;
 
 namespace PlayerConceptDesign.ViewModel
@@ -12,11 +13,11 @@ namespace PlayerConceptDesign.ViewModel
         static SetColorTheme()
         {
             colorsTheme = new ColorsTheme();
-            try { SetActualTheme(ApplicationSettings.Default.Theme); }
+            try { SetActualTheme(SettingsManager.AppSettings.Theme); }
             catch { SetDarkTheme(); }
             
-            if (ApplicationSettings.Default.Theme == "Light") 
-                InvertImageFromActualTheme(ApplicationSettings.Default.Theme);
+            if (SettingsManager.AppSettings.Theme == "Light") 
+                InvertImageFromActualTheme(SettingsManager.AppSettings.Theme);
 
         }
 
